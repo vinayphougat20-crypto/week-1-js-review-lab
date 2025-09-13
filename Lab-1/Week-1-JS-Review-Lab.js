@@ -520,14 +520,12 @@ console.log("This house at " + listing1.address + " is owned by " + listing1.cur
 //WRITE YOUR CODE BELOW
 
 const realtorFees = (listing) => {
-
-  const price =  listing.price.replace("$","").replace(",","");   
-  return price <= 450000 ? price * 0.025 : price * 0.02;
+  const price = parseInt(String(listing.price).replace(/\$|,/g, ""), 10);
+  const rate = price <= 450000 ? 0.025 : 0.02; 
+  return Math.round(price * rate); 
 };
-
 console.log(realtorFees(listings[2]));
 console.log(realtorFees(listings[6]));
-
 /**
  * Task-5: Sort the listing array ascendingly in a new variable called listingAscendingly
  */
